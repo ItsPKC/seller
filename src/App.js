@@ -14,55 +14,45 @@ function App() {
   const [opencart, setopencart] = useState(false);
   const api = "8853329d09c242f795d2577e90aa0c41";
 
-  // const getmed = async () => {
-  //   await axios.get(`https://crudcrud.com/api/${api}/med`).then((value) => {
-  //     console.log(value);
-  //   });
-  // };
+  const getdata = async () => {
+    await axios.get(`https://crudcrud.com/api/${api}/seller`).then((value) => {
+      console.log(value.data);
+      for (const i of value.data) {
+        setcart(i["cart"]);
+        setmed(i["med"]);
+      }
+    });
+  };
 
-  const updatemed = async () => {
+  const updatedata = async () => {
     try {
-      // await axios
-      //   .put(`https://crudcrud.com/api/${api}/med`, { id: "Pankjdk" })
-      //   .then((value) => {
-      //     console.log(value.data);
-      //   });
+      let id = "";
+      await axios
+        .get(`https://crudcrud.com/api/${api}/seller`)
+        .then((value) => {
+          console.log(value.data);
+          for (const i of value.data) {
+            id = i._id;
+          }
+        });
 
-      await axios.post(`https://crudcrud.com/api/${api}/store`, {});
+      await axios.post(`https://crudcrud.com/api/${api}/seller/${id}`, {
+        cart: cart,
+        med: med,
+      });
     } catch (e) {
       console.log(e.data);
     }
   };
 
-  // const getcart = async () => {
-  //   await axios.get(`https://crudcrud.com/api/${api}/cart`).then((value) => {
-  //     console.log(value.data);
-  //   });
-  // };
-
-  const updatecart = async () => {
-    await axios.post(`https://crudcrud.com/api/${api}/cart`, cart);
-  };
-
-  const makeCrudFolder = async () => {
-    await axios.post(`https://crudcrud.com/api/${api}/seller`, {
-      cart: cart,
-      med: med,
-    });
-  };
-
   useEffect(() => {
-    // getcart();
-    // getmed();
-    // updatemed();
-    makeCrudFolder();
-
+    getdata();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Contex.Provider
-      value={{ med, setmed, cart, setcart, setopencart, updatecart, updatemed }}
+      value={{ med, setmed, cart, setcart, setopencart, updatedata }}
     >
       <div className="App">
         <Header />
