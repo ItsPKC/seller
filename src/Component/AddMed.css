@@ -1,0 +1,21 @@
+.addMed{
+    display: grid;
+    width: 80%;
+    margin: 50px auto;
+    grid-template-columns: 2fr 2fr 1fr 1fr 1fr 1fr 2fr;
+    gap: 10px;
+}
+
+.addMed > div{
+    width: calc(100%);
+}
+
+.button{
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    padding: 3px 15px 5px 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-left: 50px;
+}

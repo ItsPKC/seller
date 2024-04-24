@@ -1,0 +1,18 @@
+.header{
+    position: sticky;
+    height: 40;
+    display: grid;
+    padding: 10px;
+    justify-items: right;
+    background-color: lightcyan;
+}
+
+.cart-button{ 
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    padding: 3px 15px 5px 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+
+}

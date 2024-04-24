@@ -1,0 +1,22 @@
+.med{
+    display: grid;
+    margin: 50px auto;
+    width: 80%;
+    gap: 10px;
+}
+
+.med > div{
+    display:  grid;
+    grid-template-columns: 2fr 2fr 100px repeat(3, 1fr);
+    gap: 15px;
+}
+
+.addToCart{
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    padding: 3px 10px 5px 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
